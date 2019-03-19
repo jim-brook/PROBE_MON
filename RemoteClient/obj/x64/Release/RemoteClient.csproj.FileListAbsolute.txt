@@ -1,0 +1,6 @@
+C:\Users\unknown\test\Common\Bin\RemoteClient.exe.config
+C:\Users\unknown\test\Common\Bin\RemoteClient.exe
+C:\Users\unknown\test\RemoteClient\obj\x64\Release\RemoteClient.csprojAssemblyReference.cache
+C:\Users\unknown\test\RemoteClient\obj\x64\Release\RemoteClient.csproj.CoreCompileInputs.cache
+C:\Users\unknown\test\RemoteClient\obj\x64\Release\RemoteClient.csproj.CopyComplete
+C:\Users\unknown\test\RemoteClient\obj\x64\Release\RemoteClient.exe

@@ -1,0 +1,334 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using SharpPcap;
+using SharpPcap.AirPcap;
+using SharpPcap.LibPcap;
+using PacketDotNet;
+using PacketDotNet.Ieee80211;
+using System.Net;
+using System.Net.Sockets;
+using System.Runtime.Serialization.Formatters.Binary;
+
+namespace ProbeMon
+{
+    class Program
+    {
+        public static int PortNo { get; set; }
+		public static bool BackgroundThreadStop = false;
+		public static object QueueLock = new object();
+		public static List<RawCapture> PacketQueue = new List<RawCapture>();
+		public static string ServerAddress { get; set; }
+        public static AirPcapDevice AirPcapDev;
+        public static UInt32 ChanNo { get; set; }
+        public static bool ChanWritten { get; set; }
+        public static OSPlatform SystemPlatform { get; set; }
+        public enum OSPlatform
+        {
+            Windows = 1,
+            Linux = 2,
+            Unknown = 3
+        }
+        static void Main(string[] args)
+        {          
+            UInt32 count = 0;
+            int PortNumber = 0;
+            OSPlatform Platform;
+
+			if (args.Length != 0) 
+			{
+				if (args [0] != null) {
+					try {
+						ServerAddress = args [0].ToString ();
+					} catch {
+						Console.WriteLine("Bad IP Address Entered");
+                        Console.WriteLine("RemoteClient <server ip> <port no>");
+						return;
+					}
+				} 
+				else 
+				{
+					Console.WriteLine ("No IP Address Entered");
+					return;
+				}
+                if (args[1] != null)
+                {
+                    try
+                    {
+                        if (int.TryParse(args[1], out PortNumber))
+                        {
+                            string phony = args[1].ToString();
+                            PortNo = PortNumber;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Bad Port Number");
+                            Console.WriteLine("RemoteClient <server ip> <port no>");
+                            return;
+                        }
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Bad Port Number");
+                        Console.WriteLine("RemoteClient <server ip> <port no>");
+                        return;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No IP Address Entered");
+                    return;
+                }
+			}
+            OperatingSystem os = Environment.OSVersion;
+            PlatformID pid = os.Platform;
+            switch (pid)
+            {
+                case PlatformID.Win32NT:
+                case PlatformID.Win32S:
+                case PlatformID.Win32Windows:
+                case PlatformID.WinCE:
+                    Platform = OSPlatform.Windows;
+                    break;
+                case PlatformID.Unix:
+                    Platform = OSPlatform.Linux;
+                    break;
+                default:
+                    Platform = OSPlatform.Unknown;
+                    break;
+            }
+            SystemPlatform = Platform;
+            if (Platform == OSPlatform.Linux)
+            {
+                LibPcapLiveDeviceList LibCapDevices = LibPcapLiveDeviceList.Instance;
+                if (LibCapDevices.Count == 0)
+                {
+                    Console.WriteLine("No LibCap Devices Found. Re-run as Administrator.\n");
+                    return;
+                }
+                Console.WriteLine("LibPCap device(s) found:");
+                foreach (ICaptureDevice dev in LibCapDevices)
+                {
+                    Console.WriteLine("[{0}] - {1} {2}", count.ToString(), dev.Name, dev.Description);
+                    count++;
+                }
+                Console.WriteLine("");
+                Console.Write("Choose a capture device:");
+                int DeviceIndex = int.Parse(Console.ReadLine());
+                var backgroundThread = new System.Threading.Thread(BackgroundThread);
+                backgroundThread.Start();
+                LibPcapLiveDevice LibCapDevice = LibCapDevices[DeviceIndex] as LibPcapLiveDevice;
+                LibCapDevice.OnPacketArrival += new SharpPcap.PacketArrivalEventHandler(OnPacketArrival);
+                LibCapDevice.Open();
+                LibCapDevice.StartCapture();
+                Console.Write("\n\nCapturing on {0}\nChannel:{1}\tMonitor Mode On\n\n", LibCapDevice.Name, LibCapDevice.Description);
+                Console.CancelKeyPress += delegate(object sender, ConsoleCancelEventArgs e)
+                {
+                    e.Cancel = true;
+                    BackgroundThreadStop = true;
+                    LibCapDevice.StopCapture();
+                    LibCapDevice.Close();
+                    backgroundThread.Abort();
+                    Environment.Exit(0);
+                    Console.WriteLine("Won't Print, But A Clean Exit?");
+                };
+            }
+            else if (Platform == OSPlatform.Windows)
+            {
+                while (Console.KeyAvailable) { Console.ReadKey(true); } //flush console.read()
+                uint ChannelNumber;
+                try
+                {
+                    if (uint.TryParse(args[2], out ChannelNumber))
+                    {
+                        ChanNo = ChannelNumber;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Bad Channel Number");
+                        Console.WriteLine("RemoteClient <server ip> <port no> <channel no");
+                        return;
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("Bad Channel Number");
+                    Console.WriteLine("RemoteClient <server ip> <port no> <channel no");
+                    return;
+                }             
+                AirPcapDeviceList AirPCapDevices = AirPcapDeviceList.Instance;
+                if (AirPCapDevices.Count == 0)
+                {
+                    Console.WriteLine("No AirPCap Devices Found. Re-run as Administrator.\n");
+                    return;
+                }
+                Console.WriteLine("AirPCap device(s) found:");
+                foreach (AirPcapDevice dev in AirPCapDevices)
+                {
+                    Console.WriteLine("[{0}] - {1} {2}", count.ToString(), dev.Name, dev.Description);
+                    count++;
+                }
+                Console.WriteLine("");
+                Console.Write("Choose a capture device:");
+                string Dev = Console.ReadLine();
+                int DeviceIndex;
+                if (int.TryParse(Dev, out DeviceIndex))
+                {
+                    if (DeviceIndex >= 0 && DeviceIndex <= count)
+                    {
+                        //valid number (int)
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid Device Number: " + DeviceIndex.ToString() + " " + count.ToString());
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Device Number: " + DeviceIndex.ToString() + " " + count.ToString());
+                }
+                //Console.WriteLine("");
+                //Console.Write("Choose a capture device:");
+                //int DeviceIndex = int.Parse(Console.ReadLine());
+
+
+                AirPcapDev = AirPCapDevices[DeviceIndex] as AirPcapDevice;
+                //AirPcapDev.Open(DeviceMode.Promiscuous, 0);
+                AirPcapDev.Open();
+                AirPcapDev.Channel = ChanNo = ChannelNumber;
+                //AirPcapDev.AirPcapLinkType = AirPcapLinkTypes._802_11_PLUS_RADIO;
+                AirPcapDev.MacFlags = AirPcapMacFlags.MonitorModeOn;
+                AirPcapDev.OnPacketArrival += new SharpPcap.PacketArrivalEventHandler(OnPacketArrival);
+                var backgroundThread = new System.Threading.Thread(BackgroundThread);
+                backgroundThread.Start();  
+                AirPcapDev.StartCapture();
+                Console.Write("\n\nCapturing on {0}\nChannel:{1}\tMonitor Mode {2}\n\n", AirPcapDev.Description, AirPcapDev.Channel.ToString(), AirPcapDev.MacFlags.ToString());
+
+            }
+        }
+        public static void OnPacketArrival(object sender, CaptureEventArgs e)
+        {               
+			lock (QueueLock)
+			{
+				PacketQueue.Add(e.Packet);      
+			}
+			//Console.Write(".");
+        }
+
+        private static void BackgroundThread()
+        {
+			TcpClient client = new TcpClient();
+			client.ReceiveTimeout = 2000;
+			client.SendTimeout = 4000;
+			IPAddress Addr = IPAddress.Parse (ServerAddress);
+			try
+			{
+                client.Connect(new IPEndPoint(Addr, PortNo));
+			}
+			catch(Exception Ex)
+			{
+				Console.WriteLine("Server Unreachable");
+				BackgroundThreadStop = true;
+				return;
+			}
+			Console.WriteLine("Connected.");
+			UInt64 FrameCounter = 0;
+
+	
+			while (!BackgroundThreadStop)
+			{
+				bool shouldSleep = true;
+				lock (QueueLock)
+				{
+					if (PacketQueue.Count != 0)
+					{
+						shouldSleep = false;
+					}
+				}
+
+				if (shouldSleep)
+				{
+					System.Threading.Thread.Sleep(250);
+					if(BackgroundThreadStop)
+					{
+						client.Close ();		
+					}
+				}
+				else // should proceabemsss the queue
+				{
+                    if ((ChanWritten == false) && (SystemPlatform == OSPlatform.Windows))
+                    {
+                        AirPcapDev.Channel = ChanNo;
+                        ChanWritten = true;
+                    }
+                    
+					List<RawCapture> ourQueue;
+					lock (QueueLock)
+					{
+						// swap queues, giving the capture callback a new one
+						ourQueue = PacketQueue;
+						PacketQueue = new List<RawCapture>();
+					}
+
+					foreach (var packet in ourQueue)
+					{
+
+						bool FrameFound = false;
+						Packet ParsedPacket = Packet.ParsePacket(packet.LinkLayerType, packet.Data);
+						if (ParsedPacket.PayloadPacket == null) { Console.WriteLine("NULL Payload"); continue; }
+						MacFrame macFrame = ParsedPacket.PayloadPacket as MacFrame;
+						//Console.WriteLine(packet.LinkLayerType.ToString());
+						if (packet.LinkLayerType == PacketDotNet.LinkLayers.Ieee80211_Radio)
+						{
+							switch (macFrame.FrameControl.SubType)
+							{
+							case PacketDotNet.Ieee80211.FrameControlField.FrameSubTypes.ManagementProbeRequest:
+								FrameFound = true;
+								break;
+							case PacketDotNet.Ieee80211.FrameControlField.FrameSubTypes.ManagementProbeResponse:
+								FrameFound = true;
+								break;
+							case PacketDotNet.Ieee80211.FrameControlField.FrameSubTypes.ManagementAssociationResponse:
+								FrameFound = true;
+								break;
+							case PacketDotNet.Ieee80211.FrameControlField.FrameSubTypes.ManagementAssociationRequest:
+								FrameFound = true;
+								break;
+							case PacketDotNet.Ieee80211.FrameControlField.FrameSubTypes.ManagementReassociationRequest:
+								FrameFound = true;
+								break;
+
+							default:
+								//Console.WriteLine(macFrame.ToString());
+								break;
+
+
+							}
+						}
+
+						if (FrameFound)
+						{
+							//Console.WriteLine(macFrame.ToString());
+							try
+							{
+								BinaryFormatter bf = new BinaryFormatter();
+								NetworkStream ns = client.GetStream();
+								bf.Serialize(ns, packet.Data);
+								FrameCounter++;
+								Console.WriteLine("TX: " + FrameCounter.ToString());	
+							}
+							catch (Exception Ex)
+							{                                
+								Console.WriteLine(Ex.ToString());
+							}	
+						}
+					}
+				}
+			}
+			client.Close();  
+			Console.WriteLine("Background Thread Exited....");
+		}       
+    }
+}

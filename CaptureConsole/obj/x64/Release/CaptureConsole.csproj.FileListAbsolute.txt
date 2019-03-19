@@ -1,0 +1,6 @@
+C:\Users\unknown\test\Common\Bin\CaptureConsole.exe.config
+C:\Users\unknown\test\Common\Bin\CaptureConsole.exe
+C:\Users\unknown\test\CaptureConsole\obj\x64\Release\CaptureConsole.csprojAssemblyReference.cache
+C:\Users\unknown\test\CaptureConsole\obj\x64\Release\CaptureConsole.csproj.CoreCompileInputs.cache
+C:\Users\unknown\test\CaptureConsole\obj\x64\Release\CaptureConsole.csproj.CopyComplete
+C:\Users\unknown\test\CaptureConsole\obj\x64\Release\CaptureConsole.exe

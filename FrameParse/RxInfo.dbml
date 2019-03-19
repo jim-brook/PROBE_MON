@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Wireless" Class="RxInfoDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DELL-PC\SQL2012EXPRESS;Initial Catalog=Wireless;Integrated Security=True" SettingsObjectName="ProbeMon.Properties.Settings" SettingsPropertyName="WirelessConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.RxInfo" Member="RxInfos">
+    <Type Name="RxInfo">
+      <Column Name="EntryId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SourceAddr" Type="System.Data.Linq.Binary" DbType="Binary(6) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DestinationAddr" Type="System.Data.Linq.Binary" DbType="Binary(6)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="BSSID" Type="System.Data.Linq.Binary" DbType="Binary(6)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="RadioTapAntNoiseDB" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="RadioTapAntSignalDB" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="RadioTapAntNoiseDBM" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="RadioTapRSSI" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="RadioTapTxPowerDBM" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="RadioTapAntenna" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="RadioTapChannel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProbeRequestSSID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FrameType" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="TimeStamp" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

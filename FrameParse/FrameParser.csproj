@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{70E4F7A8-83DC-4D13-B2CA-3421B2B9FFE3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProbeMon</RootNamespace>
+    <AssemblyName>ProbeMon</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Common\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Common\Bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\Common\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>..\Common\Bin\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>wi-fi.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PacketDotNet, Version=0.13.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PacketDotNet.0.13.0\lib\net\PacketDotNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpPcap, Version=4.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpPcap.4.2.0\lib\net\SharpPcap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddAlarms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddAlarms.Designer.cs">
+      <DependentUpon>AddAlarms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddNewSSIDAlarm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddNewSSIDAlarm.Designer.cs">
+      <DependentUpon>AddNewSSIDAlarm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddNewStationAddrAlarm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddNewStationAddrAlarm.Designer.cs">
+      <DependentUpon>AddNewStationAddrAlarm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddToWatchList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddToWatchList.Designer.cs">
+      <DependentUpon>AddToWatchList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Alarms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Alarms.Designer.cs">
+      <DependentUpon>Alarms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetailsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailsView.Designer.cs">
+      <DependentUpon>DetailsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditWatchList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditWatchList.Designer.cs">
+      <DependentUpon>EditWatchList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrameControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrameControl.Designer.cs">
+      <DependentUpon>FrameControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Loading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loading.Designer.cs">
+      <DependentUpon>Loading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Monitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Monitor.Designer.cs">
+      <DependentUpon>Monitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PacketParsing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PacketParsing.Designer.cs">
+      <DependentUpon>PacketParsing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProbeRequests.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProbeRequests.Designer.cs">
+      <DependentUpon>ProbeRequests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RxInfo.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RxInfo.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="ShowStationInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowStationInfo.Designer.cs">
+      <DependentUpon>ShowStationInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StationWatchList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StationWatchList.Designer.cs">
+      <DependentUpon>StationWatchList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TcpIPC.cs" />
+    <EmbeddedResource Include="AddAlarms.resx">
+      <DependentUpon>AddAlarms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddNewSSIDAlarm.resx">
+      <DependentUpon>AddNewSSIDAlarm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddNewStationAddrAlarm.resx">
+      <DependentUpon>AddNewStationAddrAlarm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddToWatchList.resx">
+      <DependentUpon>AddToWatchList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Alarms.resx">
+      <DependentUpon>Alarms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailsView.resx">
+      <DependentUpon>DetailsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditWatchList.resx">
+      <DependentUpon>EditWatchList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrameControl.resx">
+      <DependentUpon>FrameControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loading.resx">
+      <DependentUpon>Loading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Monitor.resx">
+      <DependentUpon>Monitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PacketParsing.resx">
+      <DependentUpon>PacketParsing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProbeRequests.resx">
+      <DependentUpon>ProbeRequests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="ShowStationInfo.resx">
+      <DependentUpon>ShowStationInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StationWatchList.resx">
+      <DependentUpon>StationWatchList.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="RxInfo.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>RxInfo.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="RxInfo.dbml.layout">
+      <DependentUpon>RxInfo.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="wi-fi.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
