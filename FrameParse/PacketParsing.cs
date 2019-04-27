@@ -170,178 +170,178 @@ namespace ProbeMon
                 HeaderMetaData.PropRadioTapChannel = RadioHeader[RadioTapType.Channel] as ChannelRadioTapField;
                 if (HeaderMetaData.PropRadioTapChannel != null) { HeaderMetaData.RadioTapChannel = HeaderMetaData.PropRadioTapChannel.Channel; }//int
 
+            }
+            if (AssocResFrame != null)
+            {
+                HeaderMetaData.PropSrcAddr = AssocResFrame.SourceAddress;
+                HeaderMetaData.SourceAddr = AssocResFrame.SourceAddress.GetAddressBytes();
+                HeaderMetaData.PropDstAddr = AssocResFrame.DestinationAddress;
+                HeaderMetaData.DestinationAddr = AssocResFrame.DestinationAddress.GetAddressBytes();
+                HeaderMetaData.PropBSSID = AssocResFrame.BssId;
+                HeaderMetaData.BSSID = AssocResFrame.BssId.GetAddressBytes();//binary(6)
+                HeaderMetaData.PropRadioTapAntNoiseDB = RadioHeader[RadioTapType.DbAntennaNoise] as DbAntennaNoiseRadioTapField;
+                if (HeaderMetaData.PropRadioTapAntNoiseDB != null) { HeaderMetaData.RadioTapAntNoiseDB = HeaderMetaData.PropRadioTapAntNoiseDB.AntennaNoisedB; }//tinyint
 
-                if (AssocResFrame != null)
+                HeaderMetaData.PropRadioTapAntSignalDB = RadioHeader[RadioTapType.DbAntennaSignal] as DbAntennaSignalRadioTapField;
+                if (HeaderMetaData.PropRadioTapAntSignalDB != null) { HeaderMetaData.RadioTapAntSignalDB = HeaderMetaData.PropRadioTapAntSignalDB.SignalStrengthdB; }//tinyint
+
+                HeaderMetaData.PropRadioTapAntNoiseDBM = RadioHeader[RadioTapType.DbmAntennaNoise] as DbmAntennaNoiseRadioTapField;
+                if (HeaderMetaData.PropRadioTapAntNoiseDBM != null) { HeaderMetaData.RadioTapAntNoiseDBM = HeaderMetaData.PropRadioTapAntNoiseDBM.AntennaNoisedBm; }//tinyint
+
+                HeaderMetaData.PropRadioTapRssi = RadioHeader[RadioTapType.DbmAntennaSignal] as DbmAntennaSignalRadioTapField;
+                if (HeaderMetaData.PropRadioTapRssi != null) { HeaderMetaData.RadioTapRSSI = HeaderMetaData.PropRadioTapRssi.AntennaSignalDbm; } //tinyint
+
+                HeaderMetaData.PropRadioTapTxPowerDBM = RadioHeader[RadioTapType.DbmTxPower] as DbmTxPowerRadioTapField;
+                if (HeaderMetaData.PropRadioTapTxPowerDBM != null) { HeaderMetaData.RadioTapTxPowerDBM = HeaderMetaData.PropRadioTapTxPowerDBM.TxPowerdBm; }//tinyint
+
+                HeaderMetaData.PropRadioTapAntenna = RadioHeader[RadioTapType.Antenna] as AntennaRadioTapField;
+                if (HeaderMetaData.PropRadioTapAntenna != null) { HeaderMetaData.RadioTapAntenna = HeaderMetaData.PropRadioTapAntenna.Antenna; }//tinyint
+
+                HeaderMetaData.PropRadioTapChannel = RadioHeader[RadioTapType.Channel] as ChannelRadioTapField;
+                if (HeaderMetaData.PropRadioTapChannel != null) { HeaderMetaData.RadioTapChannel = HeaderMetaData.PropRadioTapChannel.Channel; }//int
+            }
+            if (AssocReqFrame != null)
+            {
+                HeaderMetaData.PropSrcAddr = AssocReqFrame.SourceAddress;
+                HeaderMetaData.SourceAddr = AssocReqFrame.SourceAddress.GetAddressBytes();
+                HeaderMetaData.PropDstAddr = AssocReqFrame.DestinationAddress;
+                HeaderMetaData.DestinationAddr = AssocReqFrame.DestinationAddress.GetAddressBytes();
+                HeaderMetaData.PropBSSID = AssocReqFrame.BssId;
+                HeaderMetaData.BSSID = AssocReqFrame.BssId.GetAddressBytes();//binary(6)
+                HeaderMetaData.PropRadioTapAntNoiseDB = RadioHeader[RadioTapType.DbAntennaNoise] as DbAntennaNoiseRadioTapField;
+                if (HeaderMetaData.PropRadioTapAntNoiseDB != null) { HeaderMetaData.RadioTapAntNoiseDB = HeaderMetaData.PropRadioTapAntNoiseDB.AntennaNoisedB; }//tinyint
+
+                HeaderMetaData.PropRadioTapAntSignalDB = RadioHeader[RadioTapType.DbAntennaSignal] as DbAntennaSignalRadioTapField;
+                if (HeaderMetaData.PropRadioTapAntSignalDB != null) { HeaderMetaData.RadioTapAntSignalDB = HeaderMetaData.PropRadioTapAntSignalDB.SignalStrengthdB; }//tinyint
+
+                HeaderMetaData.PropRadioTapAntNoiseDBM = RadioHeader[RadioTapType.DbmAntennaNoise] as DbmAntennaNoiseRadioTapField;
+                if (HeaderMetaData.PropRadioTapAntNoiseDBM != null) { HeaderMetaData.RadioTapAntNoiseDBM = HeaderMetaData.PropRadioTapAntNoiseDBM.AntennaNoisedBm; }//tinyint
+
+                HeaderMetaData.PropRadioTapRssi = RadioHeader[RadioTapType.DbmAntennaSignal] as DbmAntennaSignalRadioTapField;
+                if (HeaderMetaData.PropRadioTapRssi != null) { HeaderMetaData.RadioTapRSSI = HeaderMetaData.PropRadioTapRssi.AntennaSignalDbm; } //tinyint
+
+                HeaderMetaData.PropRadioTapTxPowerDBM = RadioHeader[RadioTapType.DbmTxPower] as DbmTxPowerRadioTapField;
+                if (HeaderMetaData.PropRadioTapTxPowerDBM != null) { HeaderMetaData.RadioTapTxPowerDBM = HeaderMetaData.PropRadioTapTxPowerDBM.TxPowerdBm; }//tinyint
+
+                HeaderMetaData.PropRadioTapAntenna = RadioHeader[RadioTapType.Antenna] as AntennaRadioTapField;
+                if (HeaderMetaData.PropRadioTapAntenna != null) { HeaderMetaData.RadioTapAntenna = HeaderMetaData.PropRadioTapAntenna.Antenna; }//tinyint
+
+                HeaderMetaData.PropRadioTapChannel = RadioHeader[RadioTapType.Channel] as ChannelRadioTapField;
+                if (HeaderMetaData.PropRadioTapChannel != null) { HeaderMetaData.RadioTapChannel = HeaderMetaData.PropRadioTapChannel.Channel; }//int
+            }
+            if (ReAssocReqFrame != null)
+            {
+                HeaderMetaData.PropSrcAddr = ReAssocReqFrame.SourceAddress;
+                HeaderMetaData.SourceAddr = ReAssocReqFrame.SourceAddress.GetAddressBytes();
+                HeaderMetaData.PropDstAddr = ReAssocReqFrame.DestinationAddress;
+                HeaderMetaData.DestinationAddr = ReAssocReqFrame.DestinationAddress.GetAddressBytes();
+                HeaderMetaData.PropBSSID = ReAssocReqFrame.BssId;
+                HeaderMetaData.BSSID = ReAssocReqFrame.BssId.GetAddressBytes();//binary(6)
+                HeaderMetaData.PropRadioTapAntNoiseDB = RadioHeader[RadioTapType.DbAntennaNoise] as DbAntennaNoiseRadioTapField;
+                if (HeaderMetaData.PropRadioTapAntNoiseDB != null) { HeaderMetaData.RadioTapAntNoiseDB = HeaderMetaData.PropRadioTapAntNoiseDB.AntennaNoisedB; }//tinyint
+
+                HeaderMetaData.PropRadioTapAntSignalDB = RadioHeader[RadioTapType.DbAntennaSignal] as DbAntennaSignalRadioTapField;
+                if (HeaderMetaData.PropRadioTapAntSignalDB != null) { HeaderMetaData.RadioTapAntSignalDB = HeaderMetaData.PropRadioTapAntSignalDB.SignalStrengthdB; }//tinyint
+
+                HeaderMetaData.PropRadioTapAntNoiseDBM = RadioHeader[RadioTapType.DbmAntennaNoise] as DbmAntennaNoiseRadioTapField;
+                if (HeaderMetaData.PropRadioTapAntNoiseDBM != null) { HeaderMetaData.RadioTapAntNoiseDBM = HeaderMetaData.PropRadioTapAntNoiseDBM.AntennaNoisedBm; }//tinyint
+
+                HeaderMetaData.PropRadioTapRssi = RadioHeader[RadioTapType.DbmAntennaSignal] as DbmAntennaSignalRadioTapField;
+                if (HeaderMetaData.PropRadioTapRssi != null) { HeaderMetaData.RadioTapRSSI = HeaderMetaData.PropRadioTapRssi.AntennaSignalDbm; } //tinyint
+
+                HeaderMetaData.PropRadioTapTxPowerDBM = RadioHeader[RadioTapType.DbmTxPower] as DbmTxPowerRadioTapField;
+                if (HeaderMetaData.PropRadioTapTxPowerDBM != null) { HeaderMetaData.RadioTapTxPowerDBM = HeaderMetaData.PropRadioTapTxPowerDBM.TxPowerdBm; }//tinyint
+
+                HeaderMetaData.PropRadioTapAntenna = RadioHeader[RadioTapType.Antenna] as AntennaRadioTapField;
+                if (HeaderMetaData.PropRadioTapAntenna != null) { HeaderMetaData.RadioTapAntenna = HeaderMetaData.PropRadioTapAntenna.Antenna; }//tinyint
+
+                HeaderMetaData.PropRadioTapChannel = RadioHeader[RadioTapType.Channel] as ChannelRadioTapField;
+                if (HeaderMetaData.PropRadioTapChannel != null) { HeaderMetaData.RadioTapChannel = HeaderMetaData.PropRadioTapChannel.Channel; }//int
+            }
+            if (AuthFrame != null)
+            {
+                HeaderMetaData.PropSrcAddr = AuthFrame.SourceAddress;
+                HeaderMetaData.SourceAddr = AuthFrame.SourceAddress.GetAddressBytes();
+                HeaderMetaData.PropDstAddr = AuthFrame.DestinationAddress;
+                HeaderMetaData.DestinationAddr = AuthFrame.DestinationAddress.GetAddressBytes();
+                HeaderMetaData.PropBSSID = AuthFrame.BssId;
+                HeaderMetaData.BSSID = AuthFrame.BssId.GetAddressBytes();//binary(6)
+                HeaderMetaData.PropRadioTapAntNoiseDB = RadioHeader[RadioTapType.DbAntennaNoise] as DbAntennaNoiseRadioTapField;
+                if (HeaderMetaData.PropRadioTapAntNoiseDB != null) { HeaderMetaData.RadioTapAntNoiseDB = HeaderMetaData.PropRadioTapAntNoiseDB.AntennaNoisedB; }//tinyint
+
+                HeaderMetaData.PropRadioTapAntSignalDB = RadioHeader[RadioTapType.DbAntennaSignal] as DbAntennaSignalRadioTapField;
+                if (HeaderMetaData.PropRadioTapAntSignalDB != null) { HeaderMetaData.RadioTapAntSignalDB = HeaderMetaData.PropRadioTapAntSignalDB.SignalStrengthdB; }//tinyint
+
+                HeaderMetaData.PropRadioTapAntNoiseDBM = RadioHeader[RadioTapType.DbmAntennaNoise] as DbmAntennaNoiseRadioTapField;
+                if (HeaderMetaData.PropRadioTapAntNoiseDBM != null) { HeaderMetaData.RadioTapAntNoiseDBM = HeaderMetaData.PropRadioTapAntNoiseDBM.AntennaNoisedBm; }//tinyint
+
+                HeaderMetaData.PropRadioTapRssi = RadioHeader[RadioTapType.DbmAntennaSignal] as DbmAntennaSignalRadioTapField;
+                if (HeaderMetaData.PropRadioTapRssi != null) { HeaderMetaData.RadioTapRSSI = HeaderMetaData.PropRadioTapRssi.AntennaSignalDbm; } //tinyint
+
+                HeaderMetaData.PropRadioTapTxPowerDBM = RadioHeader[RadioTapType.DbmTxPower] as DbmTxPowerRadioTapField;
+                if (HeaderMetaData.PropRadioTapTxPowerDBM != null) { HeaderMetaData.RadioTapTxPowerDBM = HeaderMetaData.PropRadioTapTxPowerDBM.TxPowerdBm; }//tinyint
+
+                HeaderMetaData.PropRadioTapAntenna = RadioHeader[RadioTapType.Antenna] as AntennaRadioTapField;
+                if (HeaderMetaData.PropRadioTapAntenna != null) { HeaderMetaData.RadioTapAntenna = HeaderMetaData.PropRadioTapAntenna.Antenna; }//tinyint
+
+                HeaderMetaData.PropRadioTapChannel = RadioHeader[RadioTapType.Channel] as ChannelRadioTapField;
+                if (HeaderMetaData.PropRadioTapChannel != null) { HeaderMetaData.RadioTapChannel = HeaderMetaData.PropRadioTapChannel.Channel; }//int
+            }
+            if (PRrespframe != null)
+            {
+                HeaderMetaData.PropSrcAddr = PRrespframe.SourceAddress;
+                HeaderMetaData.SourceAddr = PRrespframe.SourceAddress.GetAddressBytes();
+                HeaderMetaData.PropDstAddr = PRrespframe.DestinationAddress;
+                HeaderMetaData.DestinationAddr = PRrespframe.DestinationAddress.GetAddressBytes();
+                HeaderMetaData.PropBSSID = PRrespframe.BssId;
+                HeaderMetaData.BSSID = PRrespframe.BssId.GetAddressBytes();//binary(6)
+                HeaderMetaData.PropRadioTapAntNoiseDB = RadioHeader[RadioTapType.DbAntennaNoise] as DbAntennaNoiseRadioTapField;
+                if (HeaderMetaData.PropRadioTapAntNoiseDB != null) { HeaderMetaData.RadioTapAntNoiseDB = HeaderMetaData.PropRadioTapAntNoiseDB.AntennaNoisedB; }//tinyint
+
+                HeaderMetaData.PropRadioTapAntSignalDB = RadioHeader[RadioTapType.DbAntennaSignal] as DbAntennaSignalRadioTapField;
+                if (HeaderMetaData.PropRadioTapAntSignalDB != null) { HeaderMetaData.RadioTapAntSignalDB = HeaderMetaData.PropRadioTapAntSignalDB.SignalStrengthdB; }//tinyint
+
+                HeaderMetaData.PropRadioTapAntNoiseDBM = RadioHeader[RadioTapType.DbmAntennaNoise] as DbmAntennaNoiseRadioTapField;
+                if (HeaderMetaData.PropRadioTapAntNoiseDBM != null) { HeaderMetaData.RadioTapAntNoiseDBM = HeaderMetaData.PropRadioTapAntNoiseDBM.AntennaNoisedBm; }//tinyint
+
+                HeaderMetaData.PropRadioTapRssi = RadioHeader[RadioTapType.DbmAntennaSignal] as DbmAntennaSignalRadioTapField;
+                if (HeaderMetaData.PropRadioTapRssi != null) { HeaderMetaData.RadioTapRSSI = HeaderMetaData.PropRadioTapRssi.AntennaSignalDbm; } //tinyint
+
+                HeaderMetaData.PropRadioTapTxPowerDBM = RadioHeader[RadioTapType.DbmTxPower] as DbmTxPowerRadioTapField;
+                if (HeaderMetaData.PropRadioTapTxPowerDBM != null) { HeaderMetaData.RadioTapTxPowerDBM = HeaderMetaData.PropRadioTapTxPowerDBM.TxPowerdBm; }//tinyint
+
+                HeaderMetaData.PropRadioTapAntenna = RadioHeader[RadioTapType.Antenna] as AntennaRadioTapField;
+                if (HeaderMetaData.PropRadioTapAntenna != null) { HeaderMetaData.RadioTapAntenna = HeaderMetaData.PropRadioTapAntenna.Antenna; }//tinyint
+
+                HeaderMetaData.PropRadioTapChannel = RadioHeader[RadioTapType.Channel] as ChannelRadioTapField;
+                if (HeaderMetaData.PropRadioTapChannel != null) { HeaderMetaData.RadioTapChannel = HeaderMetaData.PropRadioTapChannel.Channel; }//int
+
+                //LINUX pcap frames the SSID is (count+61-5)
+                if ((FrameDesc.PacketSource == FrameControl.CaptureType.LocalDevice) || (FrameDesc.PacketSource == FrameControl.CaptureType.RemoteWinDevice))
                 {
-                    HeaderMetaData.PropSrcAddr = AssocResFrame.SourceAddress;
-                    HeaderMetaData.SourceAddr = AssocResFrame.SourceAddress.GetAddressBytes();
-                    HeaderMetaData.PropDstAddr = AssocResFrame.DestinationAddress;
-                    HeaderMetaData.DestinationAddr = AssocResFrame.DestinationAddress.GetAddressBytes();
-                    HeaderMetaData.PropBSSID = AssocResFrame.BssId;
-                    HeaderMetaData.BSSID = AssocResFrame.BssId.GetAddressBytes();//binary(6)
-                    HeaderMetaData.PropRadioTapAntNoiseDB = RadioHeader[RadioTapType.DbAntennaNoise] as DbAntennaNoiseRadioTapField;
-                    if (HeaderMetaData.PropRadioTapAntNoiseDB != null) { HeaderMetaData.RadioTapAntNoiseDB = HeaderMetaData.PropRadioTapAntNoiseDB.AntennaNoisedB; }//tinyint
-
-                    HeaderMetaData.PropRadioTapAntSignalDB = RadioHeader[RadioTapType.DbAntennaSignal] as DbAntennaSignalRadioTapField;
-                    if (HeaderMetaData.PropRadioTapAntSignalDB != null) { HeaderMetaData.RadioTapAntSignalDB = HeaderMetaData.PropRadioTapAntSignalDB.SignalStrengthdB; }//tinyint
-
-                    HeaderMetaData.PropRadioTapAntNoiseDBM = RadioHeader[RadioTapType.DbmAntennaNoise] as DbmAntennaNoiseRadioTapField;
-                    if (HeaderMetaData.PropRadioTapAntNoiseDBM != null) { HeaderMetaData.RadioTapAntNoiseDBM = HeaderMetaData.PropRadioTapAntNoiseDBM.AntennaNoisedBm; }//tinyint
-
-                    HeaderMetaData.PropRadioTapRssi = RadioHeader[RadioTapType.DbmAntennaSignal] as DbmAntennaSignalRadioTapField;
-                    if (HeaderMetaData.PropRadioTapRssi != null) { HeaderMetaData.RadioTapRSSI = HeaderMetaData.PropRadioTapRssi.AntennaSignalDbm; } //tinyint
-
-                    HeaderMetaData.PropRadioTapTxPowerDBM = RadioHeader[RadioTapType.DbmTxPower] as DbmTxPowerRadioTapField;
-                    if (HeaderMetaData.PropRadioTapTxPowerDBM != null) { HeaderMetaData.RadioTapTxPowerDBM = HeaderMetaData.PropRadioTapTxPowerDBM.TxPowerdBm; }//tinyint
-
-                    HeaderMetaData.PropRadioTapAntenna = RadioHeader[RadioTapType.Antenna] as AntennaRadioTapField;
-                    if (HeaderMetaData.PropRadioTapAntenna != null) { HeaderMetaData.RadioTapAntenna = HeaderMetaData.PropRadioTapAntenna.Antenna; }//tinyint
-
-                    HeaderMetaData.PropRadioTapChannel = RadioHeader[RadioTapType.Channel] as ChannelRadioTapField;
-                    if (HeaderMetaData.PropRadioTapChannel != null) { HeaderMetaData.RadioTapChannel = HeaderMetaData.PropRadioTapChannel.Channel; }//int
-                }
-                if (AssocReqFrame != null)
-                {
-                    HeaderMetaData.PropSrcAddr = AssocReqFrame.SourceAddress;
-                    HeaderMetaData.SourceAddr = AssocReqFrame.SourceAddress.GetAddressBytes();
-                    HeaderMetaData.PropDstAddr = AssocReqFrame.DestinationAddress;
-                    HeaderMetaData.DestinationAddr = AssocReqFrame.DestinationAddress.GetAddressBytes();
-                    HeaderMetaData.PropBSSID = AssocReqFrame.BssId;
-                    HeaderMetaData.BSSID = AssocReqFrame.BssId.GetAddressBytes();//binary(6)
-                    HeaderMetaData.PropRadioTapAntNoiseDB = RadioHeader[RadioTapType.DbAntennaNoise] as DbAntennaNoiseRadioTapField;
-                    if (HeaderMetaData.PropRadioTapAntNoiseDB != null) { HeaderMetaData.RadioTapAntNoiseDB = HeaderMetaData.PropRadioTapAntNoiseDB.AntennaNoisedB; }//tinyint
-
-                    HeaderMetaData.PropRadioTapAntSignalDB = RadioHeader[RadioTapType.DbAntennaSignal] as DbAntennaSignalRadioTapField;
-                    if (HeaderMetaData.PropRadioTapAntSignalDB != null) { HeaderMetaData.RadioTapAntSignalDB = HeaderMetaData.PropRadioTapAntSignalDB.SignalStrengthdB; }//tinyint
-
-                    HeaderMetaData.PropRadioTapAntNoiseDBM = RadioHeader[RadioTapType.DbmAntennaNoise] as DbmAntennaNoiseRadioTapField;
-                    if (HeaderMetaData.PropRadioTapAntNoiseDBM != null) { HeaderMetaData.RadioTapAntNoiseDBM = HeaderMetaData.PropRadioTapAntNoiseDBM.AntennaNoisedBm; }//tinyint
-
-                    HeaderMetaData.PropRadioTapRssi = RadioHeader[RadioTapType.DbmAntennaSignal] as DbmAntennaSignalRadioTapField;
-                    if (HeaderMetaData.PropRadioTapRssi != null) { HeaderMetaData.RadioTapRSSI = HeaderMetaData.PropRadioTapRssi.AntennaSignalDbm; } //tinyint
-
-                    HeaderMetaData.PropRadioTapTxPowerDBM = RadioHeader[RadioTapType.DbmTxPower] as DbmTxPowerRadioTapField;
-                    if (HeaderMetaData.PropRadioTapTxPowerDBM != null) { HeaderMetaData.RadioTapTxPowerDBM = HeaderMetaData.PropRadioTapTxPowerDBM.TxPowerdBm; }//tinyint
-
-                    HeaderMetaData.PropRadioTapAntenna = RadioHeader[RadioTapType.Antenna] as AntennaRadioTapField;
-                    if (HeaderMetaData.PropRadioTapAntenna != null) { HeaderMetaData.RadioTapAntenna = HeaderMetaData.PropRadioTapAntenna.Antenna; }//tinyint
-
-                    HeaderMetaData.PropRadioTapChannel = RadioHeader[RadioTapType.Channel] as ChannelRadioTapField;
-                    if (HeaderMetaData.PropRadioTapChannel != null) { HeaderMetaData.RadioTapChannel = HeaderMetaData.PropRadioTapChannel.Channel; }//int
-                }
-                if (ReAssocReqFrame != null)
-                {
-                    HeaderMetaData.PropSrcAddr = ReAssocReqFrame.SourceAddress;
-                    HeaderMetaData.SourceAddr = ReAssocReqFrame.SourceAddress.GetAddressBytes();
-                    HeaderMetaData.PropDstAddr = ReAssocReqFrame.DestinationAddress;
-                    HeaderMetaData.DestinationAddr = ReAssocReqFrame.DestinationAddress.GetAddressBytes();
-                    HeaderMetaData.PropBSSID = ReAssocReqFrame.BssId;
-                    HeaderMetaData.BSSID = ReAssocReqFrame.BssId.GetAddressBytes();//binary(6)
-                    HeaderMetaData.PropRadioTapAntNoiseDB = RadioHeader[RadioTapType.DbAntennaNoise] as DbAntennaNoiseRadioTapField;
-                    if (HeaderMetaData.PropRadioTapAntNoiseDB != null) { HeaderMetaData.RadioTapAntNoiseDB = HeaderMetaData.PropRadioTapAntNoiseDB.AntennaNoisedB; }//tinyint
-
-                    HeaderMetaData.PropRadioTapAntSignalDB = RadioHeader[RadioTapType.DbAntennaSignal] as DbAntennaSignalRadioTapField;
-                    if (HeaderMetaData.PropRadioTapAntSignalDB != null) { HeaderMetaData.RadioTapAntSignalDB = HeaderMetaData.PropRadioTapAntSignalDB.SignalStrengthdB; }//tinyint
-
-                    HeaderMetaData.PropRadioTapAntNoiseDBM = RadioHeader[RadioTapType.DbmAntennaNoise] as DbmAntennaNoiseRadioTapField;
-                    if (HeaderMetaData.PropRadioTapAntNoiseDBM != null) { HeaderMetaData.RadioTapAntNoiseDBM = HeaderMetaData.PropRadioTapAntNoiseDBM.AntennaNoisedBm; }//tinyint
-
-                    HeaderMetaData.PropRadioTapRssi = RadioHeader[RadioTapType.DbmAntennaSignal] as DbmAntennaSignalRadioTapField;
-                    if (HeaderMetaData.PropRadioTapRssi != null) { HeaderMetaData.RadioTapRSSI = HeaderMetaData.PropRadioTapRssi.AntennaSignalDbm; } //tinyint
-
-                    HeaderMetaData.PropRadioTapTxPowerDBM = RadioHeader[RadioTapType.DbmTxPower] as DbmTxPowerRadioTapField;
-                    if (HeaderMetaData.PropRadioTapTxPowerDBM != null) { HeaderMetaData.RadioTapTxPowerDBM = HeaderMetaData.PropRadioTapTxPowerDBM.TxPowerdBm; }//tinyint
-
-                    HeaderMetaData.PropRadioTapAntenna = RadioHeader[RadioTapType.Antenna] as AntennaRadioTapField;
-                    if (HeaderMetaData.PropRadioTapAntenna != null) { HeaderMetaData.RadioTapAntenna = HeaderMetaData.PropRadioTapAntenna.Antenna; }//tinyint
-
-                    HeaderMetaData.PropRadioTapChannel = RadioHeader[RadioTapType.Channel] as ChannelRadioTapField;
-                    if (HeaderMetaData.PropRadioTapChannel != null) { HeaderMetaData.RadioTapChannel = HeaderMetaData.PropRadioTapChannel.Channel; }//int
-                }
-                if (AuthFrame != null)
-                {
-                    HeaderMetaData.PropSrcAddr = AuthFrame.SourceAddress;
-                    HeaderMetaData.SourceAddr = AuthFrame.SourceAddress.GetAddressBytes();
-                    HeaderMetaData.PropDstAddr = AuthFrame.DestinationAddress;
-                    HeaderMetaData.DestinationAddr = AuthFrame.DestinationAddress.GetAddressBytes();
-                    HeaderMetaData.PropBSSID = AuthFrame.BssId;
-                    HeaderMetaData.BSSID = AuthFrame.BssId.GetAddressBytes();//binary(6)
-                    HeaderMetaData.PropRadioTapAntNoiseDB = RadioHeader[RadioTapType.DbAntennaNoise] as DbAntennaNoiseRadioTapField;
-                    if (HeaderMetaData.PropRadioTapAntNoiseDB != null) { HeaderMetaData.RadioTapAntNoiseDB = HeaderMetaData.PropRadioTapAntNoiseDB.AntennaNoisedB; }//tinyint
-
-                    HeaderMetaData.PropRadioTapAntSignalDB = RadioHeader[RadioTapType.DbAntennaSignal] as DbAntennaSignalRadioTapField;
-                    if (HeaderMetaData.PropRadioTapAntSignalDB != null) { HeaderMetaData.RadioTapAntSignalDB = HeaderMetaData.PropRadioTapAntSignalDB.SignalStrengthdB; }//tinyint
-
-                    HeaderMetaData.PropRadioTapAntNoiseDBM = RadioHeader[RadioTapType.DbmAntennaNoise] as DbmAntennaNoiseRadioTapField;
-                    if (HeaderMetaData.PropRadioTapAntNoiseDBM != null) { HeaderMetaData.RadioTapAntNoiseDBM = HeaderMetaData.PropRadioTapAntNoiseDBM.AntennaNoisedBm; }//tinyint
-
-                    HeaderMetaData.PropRadioTapRssi = RadioHeader[RadioTapType.DbmAntennaSignal] as DbmAntennaSignalRadioTapField;
-                    if (HeaderMetaData.PropRadioTapRssi != null) { HeaderMetaData.RadioTapRSSI = HeaderMetaData.PropRadioTapRssi.AntennaSignalDbm; } //tinyint
-
-                    HeaderMetaData.PropRadioTapTxPowerDBM = RadioHeader[RadioTapType.DbmTxPower] as DbmTxPowerRadioTapField;
-                    if (HeaderMetaData.PropRadioTapTxPowerDBM != null) { HeaderMetaData.RadioTapTxPowerDBM = HeaderMetaData.PropRadioTapTxPowerDBM.TxPowerdBm; }//tinyint
-
-                    HeaderMetaData.PropRadioTapAntenna = RadioHeader[RadioTapType.Antenna] as AntennaRadioTapField;
-                    if (HeaderMetaData.PropRadioTapAntenna != null) { HeaderMetaData.RadioTapAntenna = HeaderMetaData.PropRadioTapAntenna.Antenna; }//tinyint
-
-                    HeaderMetaData.PropRadioTapChannel = RadioHeader[RadioTapType.Channel] as ChannelRadioTapField;
-                    if (HeaderMetaData.PropRadioTapChannel != null) { HeaderMetaData.RadioTapChannel = HeaderMetaData.PropRadioTapChannel.Channel; }//int
-                }
-                if (PRrespframe != null)
-                {
-                    HeaderMetaData.PropSrcAddr = PRrespframe.SourceAddress;
-                    HeaderMetaData.SourceAddr = PRrespframe.SourceAddress.GetAddressBytes();
-                    HeaderMetaData.PropDstAddr = PRrespframe.DestinationAddress;
-                    HeaderMetaData.DestinationAddr = PRrespframe.DestinationAddress.GetAddressBytes();
-                    HeaderMetaData.PropBSSID = PRrespframe.BssId;
-                    HeaderMetaData.BSSID = PRrespframe.BssId.GetAddressBytes();//binary(6)
-                    HeaderMetaData.PropRadioTapAntNoiseDB = RadioHeader[RadioTapType.DbAntennaNoise] as DbAntennaNoiseRadioTapField;
-                    if (HeaderMetaData.PropRadioTapAntNoiseDB != null) { HeaderMetaData.RadioTapAntNoiseDB = HeaderMetaData.PropRadioTapAntNoiseDB.AntennaNoisedB; }//tinyint
-
-                    HeaderMetaData.PropRadioTapAntSignalDB = RadioHeader[RadioTapType.DbAntennaSignal] as DbAntennaSignalRadioTapField;
-                    if (HeaderMetaData.PropRadioTapAntSignalDB != null) { HeaderMetaData.RadioTapAntSignalDB = HeaderMetaData.PropRadioTapAntSignalDB.SignalStrengthdB; }//tinyint
-
-                    HeaderMetaData.PropRadioTapAntNoiseDBM = RadioHeader[RadioTapType.DbmAntennaNoise] as DbmAntennaNoiseRadioTapField;
-                    if (HeaderMetaData.PropRadioTapAntNoiseDBM != null) { HeaderMetaData.RadioTapAntNoiseDBM = HeaderMetaData.PropRadioTapAntNoiseDBM.AntennaNoisedBm; }//tinyint
-
-                    HeaderMetaData.PropRadioTapRssi = RadioHeader[RadioTapType.DbmAntennaSignal] as DbmAntennaSignalRadioTapField;
-                    if (HeaderMetaData.PropRadioTapRssi != null) { HeaderMetaData.RadioTapRSSI = HeaderMetaData.PropRadioTapRssi.AntennaSignalDbm; } //tinyint
-
-                    HeaderMetaData.PropRadioTapTxPowerDBM = RadioHeader[RadioTapType.DbmTxPower] as DbmTxPowerRadioTapField;
-                    if (HeaderMetaData.PropRadioTapTxPowerDBM != null) { HeaderMetaData.RadioTapTxPowerDBM = HeaderMetaData.PropRadioTapTxPowerDBM.TxPowerdBm; }//tinyint
-
-                    HeaderMetaData.PropRadioTapAntenna = RadioHeader[RadioTapType.Antenna] as AntennaRadioTapField;
-                    if (HeaderMetaData.PropRadioTapAntenna != null) { HeaderMetaData.RadioTapAntenna = HeaderMetaData.PropRadioTapAntenna.Antenna; }//tinyint
-
-                    HeaderMetaData.PropRadioTapChannel = RadioHeader[RadioTapType.Channel] as ChannelRadioTapField;
-                    if (HeaderMetaData.PropRadioTapChannel != null) { HeaderMetaData.RadioTapChannel = HeaderMetaData.PropRadioTapChannel.Channel; }//int
-
-                    //LINUX pcap frames the SSID is (count+61-5)
-                    if ((FrameDesc.PacketSource == FrameControl.CaptureType.LocalDevice) || (FrameDesc.PacketSource == FrameControl.CaptureType.RemoteWinDevice))
+                    PacketDotNet.Ieee80211.InformationElementList InfoElementList = PRrespframe.InformationElements;
+                    foreach (PacketDotNet.Ieee80211.InformationElement InfoElement in InfoElementList)
                     {
-                        PacketDotNet.Ieee80211.InformationElementList InfoElementList = PRrespframe.InformationElements;
-                        foreach (PacketDotNet.Ieee80211.InformationElement InfoElement in InfoElementList)
+                        if (InfoElement.Id == InformationElement.ElementId.ServiceSetIdentity)
                         {
-                            if (InfoElement.Id == InformationElement.ElementId.ServiceSetIdentity)
+                            if (InfoElement.ValueLength > 0)
                             {
-                                if (InfoElement.ValueLength > 0)
-                                {
-                                    char[] ssid = new char[InfoElement.Value.Length];
-                                    Array.Copy(InfoElement.Value, ssid, InfoElement.Value.Length);
-                                    string ServiceSID = new string(ssid);
-                                    HeaderMetaData.PropProbeRequestSSID = ServiceSID;
-                                    char TermTest = HeaderMetaData.PropProbeRequestSSID.ElementAt(0);
-                                    if (TermTest == '\0')
-                                    {
-                                        HeaderMetaData.PropProbeRequestSSID = string.Empty;
-                                    }
-                                }
-                                else
+                                char[] ssid = new char[InfoElement.Value.Length];
+                                Array.Copy(InfoElement.Value, ssid, InfoElement.Value.Length);
+                                string ServiceSID = new string(ssid);
+                                HeaderMetaData.PropProbeRequestSSID = ServiceSID;
+                                char TermTest = HeaderMetaData.PropProbeRequestSSID.ElementAt(0);
+                                if (TermTest == '\0')
                                 {
                                     HeaderMetaData.PropProbeRequestSSID = string.Empty;
                                 }
                             }
+                            else
+                            {
+                                HeaderMetaData.PropProbeRequestSSID = string.Empty;
+                            }
                         }
+                    }
 #if FIXED_OFFSET_PARSE
                     for (count = 0; count < 32; count++)
                     {
@@ -354,32 +354,32 @@ namespace ProbeMon
                         }
                     }
 #endif
-                    }
-                    else if (FrameDesc.PacketSource == FrameControl.CaptureType.RemoteLinuxDevice)//many variations in mmgmnt frame payloads + headers
+                }
+                else if (FrameDesc.PacketSource == FrameControl.CaptureType.RemoteLinuxDevice)//many variations in mmgmnt frame payloads + headers
+                {
+                    PacketDotNet.Ieee80211.InformationElementList InfoElementList = PRrespframe.InformationElements;
+                    foreach (PacketDotNet.Ieee80211.InformationElement InfoElement in InfoElementList)
                     {
-                        PacketDotNet.Ieee80211.InformationElementList InfoElementList = PRrespframe.InformationElements;
-                        foreach (PacketDotNet.Ieee80211.InformationElement InfoElement in InfoElementList)
+                        if (InfoElement.Id == InformationElement.ElementId.ServiceSetIdentity)
                         {
-                            if (InfoElement.Id == InformationElement.ElementId.ServiceSetIdentity)
+                            if (InfoElement.ValueLength > 0)
                             {
-                                if (InfoElement.ValueLength > 0)
-                                {
-                                    char[] ssid = new char[InfoElement.Value.Length];
-                                    Array.Copy(InfoElement.Value, ssid, InfoElement.Value.Length);
-                                    string ServiceSID = new string(ssid);
-                                    HeaderMetaData.PropProbeRequestSSID = ServiceSID;
-                                    char TermTest = HeaderMetaData.PropProbeRequestSSID.ElementAt(0);
-                                    if (TermTest == '\0')
-                                    {
-                                        HeaderMetaData.PropProbeRequestSSID = string.Empty;
-                                    }
-                                }
-                                else
+                                char[] ssid = new char[InfoElement.Value.Length];
+                                Array.Copy(InfoElement.Value, ssid, InfoElement.Value.Length);
+                                string ServiceSID = new string(ssid);
+                                HeaderMetaData.PropProbeRequestSSID = ServiceSID;
+                                char TermTest = HeaderMetaData.PropProbeRequestSSID.ElementAt(0);
+                                if (TermTest == '\0')
                                 {
                                     HeaderMetaData.PropProbeRequestSSID = string.Empty;
                                 }
                             }
+                            else
+                            {
+                                HeaderMetaData.PropProbeRequestSSID = string.Empty;
+                            }
                         }
+                    }
 #if FIXED_OFFSET_PARSE
                     for (count = 0; count < 32; count++)
                     {
@@ -392,68 +392,68 @@ namespace ProbeMon
                         }
                     }
 #endif
-                    }
-
-                    Array.Resize(ref SSID, count);
-                    if (count > 0)
-                    {
-                        HeaderMetaData.PropProbeRequestSSID = new string(SSID);
-                    }
-
                 }
-                if (PRframe != null)
+
+                Array.Resize(ref SSID, count);
+                if (count > 0)
                 {
-                    HeaderMetaData.PropSrcAddr = PRframe.SourceAddress;
-                    HeaderMetaData.SourceAddr = PRframe.SourceAddress.GetAddressBytes();
-                    HeaderMetaData.PropDstAddr = PRframe.DestinationAddress;
-                    HeaderMetaData.DestinationAddr = PRframe.DestinationAddress.GetAddressBytes();
-                    HeaderMetaData.PropBSSID = PRframe.BssId;
-                    HeaderMetaData.BSSID = PRframe.BssId.GetAddressBytes();//binary(6)
-                    HeaderMetaData.PropRadioTapAntNoiseDB = RadioHeader[RadioTapType.DbAntennaNoise] as DbAntennaNoiseRadioTapField;
-                    if (HeaderMetaData.PropRadioTapAntNoiseDB != null) { HeaderMetaData.RadioTapAntNoiseDB = HeaderMetaData.PropRadioTapAntNoiseDB.AntennaNoisedB; }//tinyint
+                    HeaderMetaData.PropProbeRequestSSID = new string(SSID);
+                }
 
-                    HeaderMetaData.PropRadioTapAntSignalDB = RadioHeader[RadioTapType.DbAntennaSignal] as DbAntennaSignalRadioTapField;
-                    if (HeaderMetaData.PropRadioTapAntSignalDB != null) { HeaderMetaData.RadioTapAntSignalDB = HeaderMetaData.PropRadioTapAntSignalDB.SignalStrengthdB; }//tinyint
+            }
+            if (PRframe != null)
+            {
+                HeaderMetaData.PropSrcAddr = PRframe.SourceAddress;
+                HeaderMetaData.SourceAddr = PRframe.SourceAddress.GetAddressBytes();
+                HeaderMetaData.PropDstAddr = PRframe.DestinationAddress;
+                HeaderMetaData.DestinationAddr = PRframe.DestinationAddress.GetAddressBytes();
+                HeaderMetaData.PropBSSID = PRframe.BssId;
+                HeaderMetaData.BSSID = PRframe.BssId.GetAddressBytes();//binary(6)
+                HeaderMetaData.PropRadioTapAntNoiseDB = RadioHeader[RadioTapType.DbAntennaNoise] as DbAntennaNoiseRadioTapField;
+                if (HeaderMetaData.PropRadioTapAntNoiseDB != null) { HeaderMetaData.RadioTapAntNoiseDB = HeaderMetaData.PropRadioTapAntNoiseDB.AntennaNoisedB; }//tinyint
 
-                    HeaderMetaData.PropRadioTapAntNoiseDBM = RadioHeader[RadioTapType.DbmAntennaNoise] as DbmAntennaNoiseRadioTapField;
-                    if (HeaderMetaData.PropRadioTapAntNoiseDBM != null) { HeaderMetaData.RadioTapAntNoiseDBM = HeaderMetaData.PropRadioTapAntNoiseDBM.AntennaNoisedBm; }//tinyint
+                HeaderMetaData.PropRadioTapAntSignalDB = RadioHeader[RadioTapType.DbAntennaSignal] as DbAntennaSignalRadioTapField;
+                if (HeaderMetaData.PropRadioTapAntSignalDB != null) { HeaderMetaData.RadioTapAntSignalDB = HeaderMetaData.PropRadioTapAntSignalDB.SignalStrengthdB; }//tinyint
 
-                    HeaderMetaData.PropRadioTapRssi = RadioHeader[RadioTapType.DbmAntennaSignal] as DbmAntennaSignalRadioTapField;
-                    if (HeaderMetaData.PropRadioTapRssi != null) { HeaderMetaData.RadioTapRSSI = HeaderMetaData.PropRadioTapRssi.AntennaSignalDbm; } //tinyint
+                HeaderMetaData.PropRadioTapAntNoiseDBM = RadioHeader[RadioTapType.DbmAntennaNoise] as DbmAntennaNoiseRadioTapField;
+                if (HeaderMetaData.PropRadioTapAntNoiseDBM != null) { HeaderMetaData.RadioTapAntNoiseDBM = HeaderMetaData.PropRadioTapAntNoiseDBM.AntennaNoisedBm; }//tinyint
 
-                    HeaderMetaData.PropRadioTapTxPowerDBM = RadioHeader[RadioTapType.DbmTxPower] as DbmTxPowerRadioTapField;
-                    if (HeaderMetaData.PropRadioTapTxPowerDBM != null) { HeaderMetaData.RadioTapTxPowerDBM = HeaderMetaData.PropRadioTapTxPowerDBM.TxPowerdBm; }//tinyint
+                HeaderMetaData.PropRadioTapRssi = RadioHeader[RadioTapType.DbmAntennaSignal] as DbmAntennaSignalRadioTapField;
+                if (HeaderMetaData.PropRadioTapRssi != null) { HeaderMetaData.RadioTapRSSI = HeaderMetaData.PropRadioTapRssi.AntennaSignalDbm; } //tinyint
 
-                    HeaderMetaData.PropRadioTapAntenna = RadioHeader[RadioTapType.Antenna] as AntennaRadioTapField;
-                    if (HeaderMetaData.PropRadioTapAntenna != null) { HeaderMetaData.RadioTapAntenna = HeaderMetaData.PropRadioTapAntenna.Antenna; }//tinyint
+                HeaderMetaData.PropRadioTapTxPowerDBM = RadioHeader[RadioTapType.DbmTxPower] as DbmTxPowerRadioTapField;
+                if (HeaderMetaData.PropRadioTapTxPowerDBM != null) { HeaderMetaData.RadioTapTxPowerDBM = HeaderMetaData.PropRadioTapTxPowerDBM.TxPowerdBm; }//tinyint
 
-                    HeaderMetaData.PropRadioTapChannel = RadioHeader[RadioTapType.Channel] as ChannelRadioTapField;
-                    if (HeaderMetaData.PropRadioTapChannel != null) { HeaderMetaData.RadioTapChannel = HeaderMetaData.PropRadioTapChannel.Channel; }//int
-                    if ((FrameDesc.PacketSource == FrameControl.CaptureType.LocalDevice) || (FrameDesc.PacketSource == FrameControl.CaptureType.RemoteWinDevice))
-                    {//There are diffs in the packet headers etc between win-aipcap and linux lipcap. linux hdrs are smaller
-                        PacketDotNet.Ieee80211.InformationElementList InfoElementList = PRframe.InformationElements;
-                        foreach (PacketDotNet.Ieee80211.InformationElement InfoElement in InfoElementList)
+                HeaderMetaData.PropRadioTapAntenna = RadioHeader[RadioTapType.Antenna] as AntennaRadioTapField;
+                if (HeaderMetaData.PropRadioTapAntenna != null) { HeaderMetaData.RadioTapAntenna = HeaderMetaData.PropRadioTapAntenna.Antenna; }//tinyint
+
+                HeaderMetaData.PropRadioTapChannel = RadioHeader[RadioTapType.Channel] as ChannelRadioTapField;
+                if (HeaderMetaData.PropRadioTapChannel != null) { HeaderMetaData.RadioTapChannel = HeaderMetaData.PropRadioTapChannel.Channel; }//int
+                if ((FrameDesc.PacketSource == FrameControl.CaptureType.LocalDevice) || (FrameDesc.PacketSource == FrameControl.CaptureType.RemoteWinDevice))
+                {//There are diffs in the packet headers etc between win-aipcap and linux lipcap. linux hdrs are smaller
+                    PacketDotNet.Ieee80211.InformationElementList InfoElementList = PRframe.InformationElements;
+                    foreach (PacketDotNet.Ieee80211.InformationElement InfoElement in InfoElementList)
+                    {
+                        if (InfoElement.Id == InformationElement.ElementId.ServiceSetIdentity)
                         {
-                            if (InfoElement.Id == InformationElement.ElementId.ServiceSetIdentity)
+                            if (InfoElement.ValueLength > 0)
                             {
-                                if (InfoElement.ValueLength > 0)
-                                {
-                                    char[] ssid = new char[InfoElement.Value.Length];
-                                    Array.Copy(InfoElement.Value, ssid, InfoElement.Value.Length);
-                                    string ServiceSID = new string(ssid);
-                                    HeaderMetaData.PropProbeRequestSSID = ServiceSID;
-                                    char TermTest = HeaderMetaData.PropProbeRequestSSID.ElementAt(0);
-                                    if (TermTest == '\0')
-                                    {
-                                        HeaderMetaData.PropProbeRequestSSID = string.Empty;
-                                    }
-                                }
-                                else
+                                char[] ssid = new char[InfoElement.Value.Length];
+                                Array.Copy(InfoElement.Value, ssid, InfoElement.Value.Length);
+                                string ServiceSID = new string(ssid);
+                                HeaderMetaData.PropProbeRequestSSID = ServiceSID;
+                                char TermTest = HeaderMetaData.PropProbeRequestSSID.ElementAt(0);
+                                if (TermTest == '\0')
                                 {
                                     HeaderMetaData.PropProbeRequestSSID = string.Empty;
                                 }
                             }
+                            else
+                            {
+                                HeaderMetaData.PropProbeRequestSSID = string.Empty;
+                            }
                         }
+                    }
 #if FIXED_OFFSET_PARSE
                     for (count = 0; count < 32; count++)
                     {
@@ -467,31 +467,31 @@ namespace ProbeMon
                     }
 #endif
 
-                    }
-                    else if (FrameDesc.PacketSource == FrameControl.CaptureType.RemoteLinuxDevice)//many variations in mmgmnt frame payloads + headers
+                }
+                else if (FrameDesc.PacketSource == FrameControl.CaptureType.RemoteLinuxDevice)//many variations in mmgmnt frame payloads + headers
+                {
+                    PacketDotNet.Ieee80211.InformationElementList InfoElementList = PRframe.InformationElements;
+                    foreach (PacketDotNet.Ieee80211.InformationElement InfoElement in InfoElementList)
                     {
-                        PacketDotNet.Ieee80211.InformationElementList InfoElementList = PRframe.InformationElements;
-                        foreach (PacketDotNet.Ieee80211.InformationElement InfoElement in InfoElementList)
+                        if (InfoElement.Id == InformationElement.ElementId.ServiceSetIdentity)
                         {
-                            if (InfoElement.Id == InformationElement.ElementId.ServiceSetIdentity)
+                            if (InfoElement.ValueLength > 0)
                             {
-                                if (InfoElement.ValueLength > 0)
-                                {
-                                    char[] ssid = new char[InfoElement.Value.Length];
-                                    Array.Copy(InfoElement.Value, ssid, InfoElement.Value.Length);
-                                    string ServiceSID = new string(ssid);
-                                    HeaderMetaData.PropProbeRequestSSID = ServiceSID;
-                                    char TermTest = HeaderMetaData.PropProbeRequestSSID.ElementAt(0);
-                                    if (TermTest == '\0')
-                                    {
-                                        HeaderMetaData.PropProbeRequestSSID = string.Empty;
-                                    }
-                                }
-                                else
+                                char[] ssid = new char[InfoElement.Value.Length];
+                                Array.Copy(InfoElement.Value, ssid, InfoElement.Value.Length);
+                                string ServiceSID = new string(ssid);
+                                HeaderMetaData.PropProbeRequestSSID = ServiceSID;
+                                char TermTest = HeaderMetaData.PropProbeRequestSSID.ElementAt(0);
+                                if (TermTest == '\0')
                                 {
                                     HeaderMetaData.PropProbeRequestSSID = string.Empty;
                                 }
                             }
+                            else
+                            {
+                                HeaderMetaData.PropProbeRequestSSID = string.Empty;
+                            }
+                        }
 #if FIXED_OFFSET_PARSE
                     for (count = 0; count < 32; count++)
                     {
@@ -504,37 +504,37 @@ namespace ProbeMon
                         }
                     }
 #endif
-                        }
-                    }
-                    Array.Resize(ref SSID, count);
-                    if (count > 0)
-                    {
-                        HeaderMetaData.PropProbeRequestSSID = new string(SSID);
                     }
                 }
-                if (FrameFound)
+                Array.Resize(ref SSID, count);
+                if (count > 0)
                 {
-                    HeaderMetaData.SourceLoc = FrameDesc.PortNo;
-                    HeaderMetaData.PropFrameType = MACFrame.FrameControl.SubType;
-                    HeaderMetaData.FrameType = (byte)HeaderMetaData.PropFrameType;
-                    HeaderMetaData.TimeStamp = DateTime.Now;
-                    HeaderMetaData.FirstSeen = DateTime.Now;
-                    HeaderMetaData.LastSeen = DateTime.Now;
-                    HeaderMetaData.strSrcAddr = HeaderMetaData.PropSrcAddr.ToString();
-                    HeaderMetaData.strDstAddr = HeaderMetaData.PropDstAddr.ToString();
-                    //Console.WriteLine(HeaderMetaData.FrameType.ToString());
-                    lock (PacketMetaDataQueueLock)
-                    {
-                        PacketMetaDataQueue.Enqueue(HeaderMetaData);
-                    }
-
-                    PacketMetaDataReadyWait.Set();
-
+                    HeaderMetaData.PropProbeRequestSSID = new string(SSID);
+                }
+            }
+            if (FrameFound)
+            {
+                HeaderMetaData.SourceLoc = FrameDesc.PortNo;
+                HeaderMetaData.PropFrameType = MACFrame.FrameControl.SubType;
+                HeaderMetaData.FrameType = (byte)HeaderMetaData.PropFrameType;
+                HeaderMetaData.TimeStamp = DateTime.Now;
+                HeaderMetaData.FirstSeen = DateTime.Now;
+                HeaderMetaData.LastSeen = DateTime.Now;
+                HeaderMetaData.strSrcAddr = HeaderMetaData.PropSrcAddr.ToString();
+                HeaderMetaData.strDstAddr = HeaderMetaData.PropDstAddr.ToString();
+                //Console.WriteLine(HeaderMetaData.FrameType.ToString());
+                lock (PacketMetaDataQueueLock)
+                {
+                    PacketMetaDataQueue.Enqueue(HeaderMetaData);
                 }
 
-
+                PacketMetaDataReadyWait.Set();
 
             }
+
+
+
+
         }
         public void GetPacketMetaData()
         {
