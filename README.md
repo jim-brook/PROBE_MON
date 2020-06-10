@@ -1,4 +1,4 @@
-Allows sniffing of 802.11 management frames with Windows. Allows for in/out of range alarms for specified MAC addresses, alarm for RSSI thresholds, and a simple monitor window that displays metadata of captured 802.11 management frames.
+Allows sniffing of 802.11 management frames with Windows. Provides in/out of range alarms for specified MAC addresses, alarm for RSSI thresholds, and a simple monitor window that displays metadata of captured 802.11 management frames.
 
 Dependencies:
 Visual Studio 2017
